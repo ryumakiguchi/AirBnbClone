@@ -36,9 +36,9 @@ Rails.application.configure do
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
-
+  config.action_mailer.default_url_options = { host: 'https://airbnb-ryumakiguchi.herokuapp.com/', port: 3000 }
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :cloudinary
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
