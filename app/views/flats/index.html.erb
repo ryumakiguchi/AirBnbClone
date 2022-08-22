@@ -1,0 +1,8 @@
+<ul>
+  <% @flats.each do |flat| %>
+    <li>
+      <%= flat.name %><%= flat.description %>
+      <%= cl_image_tag flat.photo.key, height: 300, width: 400, crop: :fill %>
+    </li>
+  <% end %>
+</ul>
