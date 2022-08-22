@@ -1,0 +1,18 @@
+<div class="container">
+  <ul>
+    <% @flats.each do |flat| %>
+      <li>
+        <div class="card" style="width: 20rem;">
+          <%= cl_image_tag flat.photo.key, height: 400, width: 320, crop: :fill %>
+          <div class="card-body">
+            <h5 class="card-title"><%= flat.name %></h5>
+            <p class="card-text"><%= flat.description %></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Rating: </li>
+          </ul>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
