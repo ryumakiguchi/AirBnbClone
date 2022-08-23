@@ -7,6 +7,7 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
+    @flat = Flat.find(params[:flat_id])
   end
 
   def create
@@ -15,7 +16,7 @@ class ReservationsController < ApplicationController
     @flat = Flat.find(params[:flat_id])
     @reservation.flat = @flat
     if @reservation.save
-      redirect_to root_path
+      redirect_to reservations_path
     else
       render :new, status: :unprocessable_entity
     end
