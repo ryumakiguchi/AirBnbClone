@@ -9,4 +9,6 @@ Rails.application.routes.draw do
     resources :reservations, only: %i[new create]
   end
   resources :reservations, except: %i[new create]
+  get "/my_flats", to: "flats#my_flats"
+  post "/my_flats", to: "flats#confirm"
 end

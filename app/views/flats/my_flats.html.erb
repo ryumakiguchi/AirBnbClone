@@ -1,0 +1,38 @@
+<div class="container" style="width: 40%">
+  <h3 class="my_flats-title">My flats</h3>
+  <ul style="list-style: none">
+    <% @flats.each do |flat| %>
+      <li>
+
+        <div class="card-product">
+          <img src="<%= cl_image_path flat.photo.key, crop: :fit %>" />
+          <div class="card-product-infos">
+            <h2><%= flat.name %></h2>
+            <p><%= flat.description %></p>
+          </div>
+        </div>
+
+        <h5 class="my_flats-title">Reservations</h5>
+        <ul class="list-group">
+        <% if flat.reservation %>
+          <li class="list-group-item">
+            Check in: <%= flat.reservation.check_in %>
+          </li>
+          <li class="list-group-item">
+            Check out: <%= flat.reservation.check_out %>
+          </li>
+          <li class="list-group-item">
+            Reservation made by: <%= flat.reservation.user.email %>
+          </li>
+          <li class="list-group-item">
+            Payment Status: <%= flat.reservation.payment_status %>
+          </li>
+          <li class="list-group-item">
+            Confirmation status: <%= flat.reservation.confirmation_status %>
+          </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>
