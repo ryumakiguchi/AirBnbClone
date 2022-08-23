@@ -3,6 +3,11 @@ class FlatsController < ApplicationController
     @flat = Flat.new
   end
 
+  def show
+    @flat = Flat.find(params[:id])
+    @reservation = Reservation.new
+  end
+
   def create
     @flat = Flat.new(flat_params)
     @flat.user = current_user
