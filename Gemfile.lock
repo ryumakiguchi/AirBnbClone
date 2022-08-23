@@ -165,7 +165,11 @@ GEM
       timeout
     netrc (0.11.0)
     nio4r (2.5.8)
+<<<<<<< HEAD
     nokogiri (1.13.8-x86_64-darwin)
+=======
+    nokogiri (1.13.8-arm64-darwin)
+>>>>>>> master
       racc (~> 1.4)
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
@@ -273,7 +277,11 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
+<<<<<<< HEAD
   x86_64-darwin-21
+=======
+  arm64-darwin-21
+>>>>>>> master
   x86_64-linux
 
 DEPENDENCIES
@@ -284,7 +292,7 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
-  font-awesome-sass (~> 6.1)
+  font-awesome-sass
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
