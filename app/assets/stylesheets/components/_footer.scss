@@ -8,18 +8,14 @@
   color: rgba(0,0,0,0.3);
   text-decoration: none;
   font-size: 20px;
-  position:fixed;
-  left:0px;
-  bottom:0px;
-  height:60px;
-  width:100%;
+  margin-top: 10px;
   background:rgb(240, 239, 239);
 }
 .footer-links {
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 14px;
 }
 .footer-links a {
   color: black;
