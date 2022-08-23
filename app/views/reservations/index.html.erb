@@ -1,0 +1,6 @@
+<ul class="list-group">
+<% @reservations.each do |reservation| %>
+  <li class="list-group-item"><%= reservation.check_in %></li>
+  <li class="list-group-item"><%= reservation.check_out %></li>
+<% end %>
+</ul>
