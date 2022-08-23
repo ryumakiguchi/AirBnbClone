@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   resources :flats, only: %i[new create index] do
     resources :reservations, only: %i[new create]
   end
-  resources :reservations, only: %i[edit update destroy index]
+  resources :reservations, only: %i[index edit update destroy]
 end

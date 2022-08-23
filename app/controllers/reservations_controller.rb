@@ -20,6 +20,22 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def edit
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def update
+    @reservation = Reservation.find(params[:id])
+    @reservation.update(reservation_params)
+    redirect_to reservations_path(@reservation)
+  end
+
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    redirect_to reservations_path(@reservation), status: :see_other
+  end
+
   private
 
   def reservation_params
