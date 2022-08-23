@@ -12,7 +12,7 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "My reservations", "/users/:id/reservations", class: "btn btn-ghost" %>
+            <%= link_to "My reservations", "/reservations", class: "btn btn-ghost" %>
           </li>
           <li class="nav-item">
            <%= link_to "Become a Host", "flats/new", class: "btn btn-ghost" %>

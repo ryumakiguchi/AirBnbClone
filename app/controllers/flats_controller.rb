@@ -22,6 +22,12 @@ class FlatsController < ApplicationController
     @flats = Flat.all
   end
 
+  def destroy
+    @flat = Flat.find(params[:id])
+    @flat.destroy
+    redirect_to flats_path(@flat), status: :see_others
+  end
+
   private
 
   def flat_params
