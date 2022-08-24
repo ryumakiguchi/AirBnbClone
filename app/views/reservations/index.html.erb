@@ -1,16 +1,29 @@
-<div class="reservation-container">
+<div class="reservation-container text-center">
   <h1>My reservations </h1>
-    <div class="reservation-card" style="width: 40rem;">
-      <% @reservations.each do |reservation| %>
-        <div class="reservation-cards">
-          <img src=<%= reservation.flat.photo.key %> />
-          <div class=".reservation-cards-infos">
-            <h2><%= reservation.flat.name %></h2>
-            <p><strong><%= reservation.flat.description %></strong></p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+    <div class="row">
+      <div class="col">
+        <div class="reservation-card" style="width: 40rem;">
+          <% @reservations.each do |reservation| %>
+            <div class="reservation-cards">
+              <img src="<%= cl_image_path reservation.flat.photo.key, crop: :fill %>"/>
+              <div class="reservation-infos">
+                <h2><%= reservation.flat.name %></h2>
+                <p><strong>Description: </strong><%= reservation.flat.description %></p>
+                <p><strong>Check_in: </strong><%= reservation.check_in %></p>
+                <p><strong>Check_out: </strong><%= reservation.check_out %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        </div>
+        <div class="col">
+          <div class="reservation-map">
+            <div style="width: 100%; height: 600px;"
+              data-controller="map"
+              data-map-markers-value="<%= @markers.to_json %>"
+              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
           </div>
         </div>
-      <% end %>
     </div>
 </div>
