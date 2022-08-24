@@ -3,6 +3,7 @@ class FlatsController < ApplicationController
 
   def index
     @flats = Flat.all
+    @flats = policy_scope(Flat)
     # @flats = Flat.geocoded
     # The `geocoded` scope filters only flats with coordinates
     @markers = @flats.geocoded.map do |flat|
@@ -17,16 +18,19 @@ class FlatsController < ApplicationController
 
   def new
     @flat = Flat.new
+    authorize @flat
   end
 
   def show
     @flat = Flat.find(params[:id])
     @reservation = Reservation.new
+    authorize @flat
   end
 
   def create
     @flat = Flat.new(flat_params)
     @flat.user = current_user
+    authorize @flat
     if @flat.save
       redirect_to flats_path
     else
@@ -36,13 +40,15 @@ class FlatsController < ApplicationController
 
   def destroy
     @flat = Flat.find(params[:id])
+    authorize @flat
     @flat.destroy
-    redirect_to flats_path(@flat), status: :see_others
+    redirect_to flats_path, status: :see_other
   end
 
   def my_flats
     @user = current_user
     @flats = Flat.where(user: @user)
+    authorize @flats
   end
 
   private
