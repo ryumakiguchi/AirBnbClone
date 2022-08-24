@@ -1,1 +1,2 @@
 <%= @flat %>
+<%= button_to "Destroy this restaurant", @flat, method: :delete if policy(@flat).destroy? %>

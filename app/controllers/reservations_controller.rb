@@ -3,10 +3,12 @@ class ReservationsController < ApplicationController
   def index
     @user = current_user
     @reservations = Reservation.where(user: @user)
+    @reservations = policy_scope(Reservation)
   end
 
   def new
     @reservation = Reservation.new
+    authorize @reservation
     @flat = Flat.find(params[:flat_id])
   end
 
@@ -15,6 +17,7 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
     @flat = Flat.find(params[:flat_id])
     @reservation.flat = @flat
+    authorize @reservation
     if @reservation.save
       redirect_to reservations_path
     else
@@ -25,7 +28,7 @@ class ReservationsController < ApplicationController
   def edit
   end
 
-  def update
+  def updat
     @reservation.update(reservation_params)
     redirect_to reservations_path(@reservation)
   end
@@ -35,13 +38,10 @@ class ReservationsController < ApplicationController
     redirect_to reservations_path(@reservation), status: :see_other
   end
 
-  def confirm
-    @reservation.confirmation_status = "Confirmed"
-  end
-
   private
 
   def set_reservation
+    authorize @reservation
     @reservation = Reservation.find(params[:id])
   end
 
