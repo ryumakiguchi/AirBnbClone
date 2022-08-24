@@ -3,23 +3,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  height: 40px;
+  width: 100%;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
   text-decoration: none;
   font-size: 20px;
+  background:rgb(240, 239, 239);
+  position:fixed;
+  left:0px;
+  bottom:0px;
 }
 .footer-links {
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 14px;
 }
 .footer-links a {
   color: black;
   opacity: 0.15;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 18px;
   padding: 0px 10px;
 }
 .footer-links a:hover {

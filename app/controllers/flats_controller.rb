@@ -1,4 +1,6 @@
 class FlatsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @flats = Flat.all
     # @flats = Flat.geocoded
@@ -31,6 +33,13 @@ class FlatsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @flat = Flat.find(params[:id])
+    @flat.destroy
+    redirect_to flats_path(@flat), status: :see_others
+  end
+
 
   private
 
