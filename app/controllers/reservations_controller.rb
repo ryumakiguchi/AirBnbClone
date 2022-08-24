@@ -35,6 +35,10 @@ class ReservationsController < ApplicationController
     redirect_to reservations_path(@reservation), status: :see_other
   end
 
+  def confirm
+    @reservation.confirmation_status = "Confirmed"
+  end
+
   private
 
   def set_reservation
