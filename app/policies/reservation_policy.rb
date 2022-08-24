@@ -36,7 +36,6 @@ class ReservationPolicy < ApplicationPolicy
   end
 
   private
-
   def is_user_or_admin?
     record.user == user || user.admin
   end
