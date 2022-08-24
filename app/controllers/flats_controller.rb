@@ -17,16 +17,19 @@ class FlatsController < ApplicationController
 
   def new
     @flat = Flat.new
+    authorize @flat
   end
 
   def show
     @flat = Flat.find(params[:id])
     @reservation = Reservation.new
+    authorize @flat
   end
 
   def create
     @flat = Flat.new(flat_params)
     @flat.user = current_user
+    authorize @flat
     if @flat.save
       redirect_to flats_path
     else
