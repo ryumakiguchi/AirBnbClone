@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   end
   resources :reservations, except: %i[new create]
   get "/my_flats", to: "flats#my_flats"
-  post "/my_flats", to: "flats#confirm"
+  post "/my_flats", to: "reservations#confirm"
 end

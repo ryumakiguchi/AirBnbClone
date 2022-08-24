@@ -33,6 +33,10 @@ class FlatsController < ApplicationController
     @flats = Flat.where(user: @user)
   end
 
+  def confirm
+    
+  end
+
   private
 
   def flat_params
