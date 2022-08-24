@@ -1,20 +1,21 @@
-<div class="container">
-  <ul>
+ <div class="container">
+  <div class="home-index-cards">
     <% @flats.each do |flat| %>
-      <li>
-        <div class="card" style="width: 20rem;">
+      <div>
         <% if flat.photo.attached? %>
-          <%= cl_image_tag flat.photo.key, height: 400, width: 320, crop: :fill %>
-          <div class="card-body">
-            <h5 class="card-title"><%= flat.name %></h5>
-            <p class="card-text"><%= flat.description %></p>
+          <div class="home-index-card" style="background-image: url('<%= cl_image_path flat.photo.key, height: 400, width: 320, crop: :fill %>')">
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Rating: </li>
-          </ul>
-        </div>
+          <div py-5>
+            <h5 class="card-title pt-2 text-center text-decoration-none"><strong><%= link_to flat.name, flat_path(flat) %></strong></h5>
+            <p class="card-text text-center py-1"><%= flat.description %></p>
+          </div>
         <% end %>
-      </li>
+      </div>
     <% end %>
-  </ul>
+  </div>
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
