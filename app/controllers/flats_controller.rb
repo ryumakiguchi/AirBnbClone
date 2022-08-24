@@ -1,4 +1,18 @@
 class FlatsController < ApplicationController
+  def index
+    @flats = Flat.all
+    # @flats = Flat.geocoded
+    # The `geocoded` scope filters only flats with coordinates
+    @markers = @flats.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {flat: flat}),
+        image_url: helpers.asset_url("perfil.jpeg")
+      }
+    end
+  end
+
   def new
     @flat = Flat.new
   end
@@ -16,10 +30,6 @@ class FlatsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def index
-    @flats = Flat.all
   end
 
   private
