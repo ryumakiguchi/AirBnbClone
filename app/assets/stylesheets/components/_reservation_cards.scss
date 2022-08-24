@@ -1,0 +1,47 @@
+.reservation-card {
+  margin: 40px;
+  padding: 30px;
+}
+
+.reservation-container h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.reservation-cards {
+  overflow: hidden;
+  margin: 25px;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.reservation-cards img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.reservation-cards h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.reservation-cards p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.reservation-infos {
+  padding: 16px;
+}
+
+.reservation-map {
+  margin: 80px;
+}
