@@ -1,1 +1,7 @@
-<%= @flat %>
+<%= @flat.name %>
+<%= @flat.description %>
+
+<div class="container img-fluid">
+<%= cl_image_tag @flat.photo.key, height: 300, width: 400, crop: :fill %>
+</div>
+<p>Location: <%= @flat.address %></p>
