@@ -3,6 +3,7 @@
     <% @flats.each do |flat| %>
       <li>
         <div class="card" style="width: 20rem;">
+        <% if flat.photo.attached? %>
           <%= cl_image_tag flat.photo.key, height: 400, width: 320, crop: :fill %>
           <div class="card-body">
             <h5 class="card-title"><%= flat.name %></h5>
@@ -12,6 +13,7 @@
             <li class="list-group-item">Rating: </li>
           </ul>
         </div>
+        <% end %>
       </li>
     <% end %>
   </ul>

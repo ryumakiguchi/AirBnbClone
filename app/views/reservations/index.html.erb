@@ -1,8 +1,16 @@
-<div class="contenedor">
-<ul class="list-group">
-<% @reservations.each do |reservation| %>
-  <li class="list-group-item"><%= reservation.check_in %></li>
-  <li class="list-group-item"><%= reservation.check_out %></li>
-<% end %>
-</ul>
+<div class="reservation-container">
+  <h1>My reservations </h1>
+    <div class="reservation-card" style="width: 40rem;">
+      <% @reservations.each do |reservation| %>
+        <div class="reservation-cards">
+          <img src=<%= reservation.flat.photo.key %> />
+          <div class=".reservation-cards-infos">
+            <h2><%= reservation.flat.name %></h2>
+            <p><strong><%= reservation.flat.description %></strong></p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      <% end %>
+    </div>
 </div>
