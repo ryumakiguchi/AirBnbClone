@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_24_150307) do
+
+ActiveRecord::Schema[7.0].define(version: 2022_08_24_185650) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,8 +59,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_150307) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.date "check_in"
-    t.date "check_out"
+    t.datetime "check_in", precision: nil
+    t.datetime "check_out", precision: nil
     t.boolean "payment_status", default: false
     t.string "confirmation_status", default: "pending"
     t.bigint "flat_id", null: false
@@ -77,6 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_150307) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
