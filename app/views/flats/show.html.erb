@@ -1,2 +1,7 @@
 <%= @flat %>
-<%= button_to "Destroy this restaurant", @flat, method: :delete if policy(@flat).destroy? %>
+<%= @flat.name %>
+<%= @flat.description %>
+<%= @flat.address %>
+
+<%= button_to "Destroy this flat", @flat, method: :delete, class:"btn btn-danger" if policy(@flat).destroy? %>
+<%= link_to "Edit this flat", edit_flat_path(@flat), class:"btn btn-primary" if policy(@flat).edit?  %>

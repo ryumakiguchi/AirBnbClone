@@ -28,7 +28,7 @@ class ReservationsController < ApplicationController
   def edit
   end
 
-  def updat
+  def update
     @reservation.update(reservation_params)
     redirect_to reservations_path(@reservation)
   end
@@ -41,8 +41,8 @@ class ReservationsController < ApplicationController
   private
 
   def set_reservation
-    authorize @reservation
     @reservation = Reservation.find(params[:id])
+    authorize @reservation
   end
 
   def reservation_params

@@ -5,7 +5,9 @@
       <li>
 
         <div class="card-product">
+        <% if flat.photo.attached? %>
           <img src="<%= cl_image_path flat.photo.key, crop: :fit %>" />
+        <% end %>
           <div class="card-product-infos">
             <h2><%= flat.name %></h2>
             <p><%= flat.description %></p>

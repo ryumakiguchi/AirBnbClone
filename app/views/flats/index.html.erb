@@ -5,11 +5,12 @@
         <% if flat.photo.attached? %>
           <div class="home-index-card" style="background-image: url('<%= cl_image_path flat.photo.key, height: 400, width: 320, crop: :fill %>')">
           </div>
+          <% end %>
           <div py-5>
             <h5 class="card-title pt-2 text-center text-decoration-none"><strong><%= link_to flat.name, flat_path(flat) %></strong></h5>
             <p class="card-text text-center py-1"><%= flat.description %></p>
           </div>
-        <% end %>
+
       </div>
     <% end %>
   </div>
