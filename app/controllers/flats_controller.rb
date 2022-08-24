@@ -42,7 +42,7 @@ class FlatsController < ApplicationController
     @flat = Flat.find(params[:id])
     authorize @flat
     @flat.destroy
-    redirect_to flats_path(@flat), status: :see_others
+    redirect_to flats_path, status: :see_other
   end
 
   def my_flats
