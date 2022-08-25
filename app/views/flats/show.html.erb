@@ -9,7 +9,7 @@
           <h5 class="card-title"><%= @flat.name %></h5>
           <p class="card-text"><%= @flat.description %></p>
           <p class="card-text"><strong>Location: </strong><%= @flat.address %></p>
-          <p class="card-text"><strong>Hosted by: </strong><%= @flat.user.email %></p>
+          <p class="card-text"><strong>Hosted by: </strong><%= @flat.user.first_name %></p>
           <div class="d-flex justify-content-around">
             <%= link_to "Make a reservation", new_flat_reservation_path(@flat), class:"btn btn-primary" if policy(@flat).create? %>
             <%= link_to "Edit this flat", edit_flat_path(@flat), class:"btn btn-primary" if policy(@flat).edit? %>
