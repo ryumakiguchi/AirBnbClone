@@ -3,13 +3,9 @@ class FlatsController < ApplicationController
 
   def index
     if params[:query].present?
-      # sql_query = "address ILIKE :query"
-      # @flats = Flat.where(sql_query, query: "%#{params[:query]}%")
-
       @flats = policy_scope(Flat.search_by_address(params[:query]))
     else
       @flats = policy_scope(Flat)
-      # @flats = Flat.all
     end
 
     # @flats = Flat.geocoded
