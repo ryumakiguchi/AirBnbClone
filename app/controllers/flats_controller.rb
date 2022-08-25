@@ -2,8 +2,16 @@ class FlatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @flats = Flat.all
-    @flats = policy_scope(Flat)
+    if params[:query].present?
+      # sql_query = "address ILIKE :query"
+      # @flats = Flat.where(sql_query, query: "%#{params[:query]}%")
+
+      @flats = policy_scope(Flat.search_by_address(params[:query]))
+    else
+      @flats = policy_scope(Flat)
+      # @flats = Flat.all
+    end
+
     # @flats = Flat.geocoded
     # The `geocoded` scope filters only flats with coordinates
     @markers = @flats.geocoded.map do |flat|
@@ -14,6 +22,7 @@ class FlatsController < ApplicationController
         image_url: helpers.asset_url("perfil.jpeg")
       }
     end
+
   end
 
 

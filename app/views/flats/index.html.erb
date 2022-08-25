@@ -1,4 +1,5 @@
  <div class="container">
+ <%= render "search_form" %>
   <div class="home-index-cards">
     <% @flats.each do |flat| %>
       <div>
@@ -21,3 +22,5 @@
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
+
+<%= console %>
