@@ -4,6 +4,16 @@ class ReservationsController < ApplicationController
     @user = current_user
     @reservations = Reservation.where(user: @user)
     @reservations = policy_scope(Reservation)
+    @reservations.map do |reservation|
+      flat = reservation.flat
+      @markers = [
+        {
+          lat: flat.latitude,
+          lng: flat.longitude,
+          # info_window: render_to_string(partial: "info_window", locals: { flat: flat }),
+          image_url: helpers.asset_url("perfil.jpeg")
+        }]
+    end
   end
 
   def new
