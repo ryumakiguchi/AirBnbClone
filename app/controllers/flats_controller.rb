@@ -3,13 +3,9 @@ class FlatsController < ApplicationController
 
   def index
     if params[:query].present?
-      # sql_query = "address ILIKE :query"
-      # @flats = Flat.where(sql_query, query: "%#{params[:query]}%")
-
       @flats = policy_scope(Flat.search_by_address(params[:query]))
     else
       @flats = policy_scope(Flat)
-      # @flats = Flat.all
     end
 
     # @flats = Flat.geocoded
@@ -30,6 +26,12 @@ class FlatsController < ApplicationController
     @flat = Flat.find(params[:id])
     @reservation = Reservation.new
     authorize @flat
+     @markers = [{
+        lat: @flat.latitude,
+        lng: @flat.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {flat: @flat}),
+        image_url: helpers.asset_url("perfil.jpeg")
+      }]
   end
 
   def new

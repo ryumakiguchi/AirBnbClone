@@ -1,14 +1,30 @@
-<div class="container" >
-
-  <h2> <%= @flat.name %> </h2>
-  <%= cl_image_tag @flat.photo.key, height: 300, width: 400, crop: :fill %>
-  <p>Location: <%= @flat.address %></p>
-  <p><%= @flat.description %> </p>
-  <p><%= @flat.user.email %></p>
-
-  <p><%= link_to "Make a reservation", new_flat_reservation_path(@flat), class:"btn btn-primary" if policy(@flat).create? %></p>
-
-  <%= button_to "Destroy this flat", @flat, class:"btn btn-danger", method: :delete if policy(@flat).destroy? %>
-  <%= link_to "Edit this flat", edit_flat_path(@flat), class:"btn btn-primary" if policy(@flat).edit? %>
-
+<div class="container">
+  <div class="row py-4">
+    <div class="col-sm-6", style="height: 500px">
+      <div class="card">
+      <% if @flat.photo.attached? %>
+            <%= cl_image_tag @flat.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top" %>
+          <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= @flat.name %></h5>
+          <p class="card-text"><%= @flat.description %></p>
+          <p class="card-text"><strong>Location: </strong><%= @flat.address %></p>
+          <p class="card-text"><strong>Hosted by: </strong><%= @flat.user.first_name %></p>
+          <div class="d-flex justify-content-around">
+            <%= link_to "Make a reservation", new_flat_reservation_path(@flat), class:"btn btn-primary" if policy(@flat).create? %>
+            <%= link_to "Edit this flat", edit_flat_path(@flat), class:"btn btn-primary" if policy(@flat).edit? %>
+            <%= button_to "Destroy this flat", @flat, class:"btn btn-danger", method: :delete if policy(@flat).destroy? %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <div style="width: 100%; height: 500px;" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

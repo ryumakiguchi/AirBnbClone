@@ -11,7 +11,7 @@
 .reservation-cards {
   overflow: hidden;
   margin: 25px;
-  height: 120px;
+  height: 200px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -40,8 +40,15 @@
 
 .reservation-infos {
   padding: 16px;
+  margin-left: 100px;
 }
 
 .reservation-map {
   margin: 80px;
+}
+
+.reservation-photo {
+  margin-left: 70px;
+  height: 120px;
+  width: 120px;
 }
