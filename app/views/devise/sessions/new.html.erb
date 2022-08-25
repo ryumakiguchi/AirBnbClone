@@ -1,6 +1,7 @@
-<div class="container">
-  <h2>Log in</h2>
-  <div class="form-control col-lg-1 col-offset-6 centered">
+<div class="container d-flex justify-content-center" >
+  <div style="width: 50%">
+  <h2 class="py-4">Log in</h2>
+  <div class="form-control col-lg-1 col-offset-6 centered py-3" >
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
       <div class="form-inputs">
         <%= f.input :email,
@@ -13,11 +14,12 @@
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
       </div>
 
-      <div class="form-actions">
+      <div class="form-actions py-4 d-flex align-items-center">
         <%= f.button :submit, "Log in", class: "btn btn-primary" %>
+        <%= render "devise/shared/links" %>
       </div>
     <% end %>
 
-    <%= render "devise/shared/links" %>
   </div>
+</div>
 </div>
