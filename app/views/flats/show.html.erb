@@ -10,9 +10,11 @@
           <p class="card-text"><%= @flat.description %></p>
           <p class="card-text"><%= @flat.address %></p>
           <p class="card-text"><%= @flat.user.email %></p>
-          <%= link_to "Make a reservation", new_flat_reservation_path(@flat), class:"btn btn-primary" if policy(@flat).create? %>
-          <%= button_to "Destroy this flat", @flat, class:"btn btn-danger", method: :delete if policy(@flat).destroy? %>
-          <%= link_to "Edit this flat", edit_flat_path(@flat), class:"btn btn-primary" if policy(@flat).edit? %>
+          <div class="d-flex justify-content-around">
+            <%= link_to "Make a reservation", new_flat_reservation_path(@flat), class:"btn btn-primary" if policy(@flat).create? %>
+            <%= link_to "Edit this flat", edit_flat_path(@flat), class:"btn btn-primary" if policy(@flat).edit? %>
+            <%= button_to "Destroy this flat", @flat, class:"btn btn-danger", method: :delete if policy(@flat).destroy? %>
+          </div>
         </div>
       </div>
     </div>
