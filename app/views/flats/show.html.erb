@@ -4,8 +4,11 @@
   <%= cl_image_tag @flat.photo.key, height: 300, width: 400, crop: :fill %>
   <p>Location: <%= @flat.address %></p>
   <p><%= @flat.description %> </p>
+  <p><%= @flat.user.email %></p>
+
+  <p><%= link_to "Make a reservation", new_flat_reservation_path(@flat), class:"btn btn-primary" if policy(@flat).create? %></p>
 
   <%= button_to "Destroy this flat", @flat, class:"btn btn-danger", method: :delete if policy(@flat).destroy? %>
-  <%= link_to "Edit this flat", edit_flat_path(@flat), class:"btn btn-primary" if policy(@flat).edit?  %>
+  <%= link_to "Edit this flat", edit_flat_path(@flat), class:"btn btn-primary" if policy(@flat).edit? %>
 
 </div>

@@ -9,7 +9,7 @@
               <img src="<%= cl_image_path reservation.flat.photo.key, crop: :fill %>"/>
               <% end %>
               <div class="reservation-infos">
-                <h2><%= reservation.flat.name %></h2>
+                <h2><%= link_to reservation.flat.name, flat_path(reservation.flat) %></h2>
                 <p><strong>Description: </strong><%= reservation.flat.description %></p>
                 <p><strong>Check_in: </strong><%= reservation.check_in %></p>
                 <p><strong>Check_out: </strong><%= reservation.check_out %></p>
