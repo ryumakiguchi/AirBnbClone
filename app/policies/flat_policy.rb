@@ -39,6 +39,6 @@ class FlatPolicy < ApplicationPolicy
 
 
   def is_user_or_admin?
-    record.user == user || user.admin
+    record.user == user || user&.admin
   end
 end
