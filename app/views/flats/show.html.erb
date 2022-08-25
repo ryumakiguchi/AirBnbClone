@@ -5,6 +5,7 @@
   <p>Location: <%= @flat.address %></p>
   <p><%= @flat.description %> </p>
 
-  <%= button_to "Destroy this flat", @flat, method: :delete if policy(@flat).destroy? %>
+  <%= button_to "Destroy this flat", @flat, class:"btn btn-danger", method: :delete if policy(@flat).destroy? %>
+  <%= link_to "Edit this flat", edit_flat_path(@flat), class:"btn btn-primary" if policy(@flat).edit?  %>
 
 </div>

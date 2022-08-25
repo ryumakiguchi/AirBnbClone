@@ -5,12 +5,15 @@
         <div class="reservation-card" style="width: 40rem;">
           <% @reservations.each do |reservation| %>
             <div class="reservation-cards">
+            <% if reservation.flat.photo.attached? %>
               <img src="<%= cl_image_path reservation.flat.photo.key, crop: :fill %>"/>
+              <% end %>
               <div class="reservation-infos">
                 <h2><%= reservation.flat.name %></h2>
                 <p><strong>Description: </strong><%= reservation.flat.description %></p>
                 <p><strong>Check_in: </strong><%= reservation.check_in %></p>
                 <p><strong>Check_out: </strong><%= reservation.check_out %></p>
+                <%= button_to "Destroy this reservation", reservation, method: :delete if policy(reservation).destroy? %>
               </div>
             </div>
           <% end %>
