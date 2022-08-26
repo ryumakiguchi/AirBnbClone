@@ -56,7 +56,7 @@ class FlatsController < ApplicationController
   def update
     @flat = Flat.find(params[:id])
     authorize @flat
-    if Flat.update(flat_params)
+    if @flat.update(flat_params)
       redirect_to flat_path(@flat)
     else
       render :edit, status: :unprocessable_entity
@@ -74,7 +74,7 @@ class FlatsController < ApplicationController
     @user = current_user
     @flats = Flat.where(user: @user)
     authorize @flats
-    
+
   end
 
   private
