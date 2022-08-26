@@ -60,7 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_183320) do
     t.datetime "check_in", precision: nil
     t.datetime "check_out", precision: nil
     t.boolean "payment_status", default: false
-    t.string "confirmation_status", default: "Pending"
+    t.string "confirmation_status", default: "pending"
     t.bigint "flat_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
