@@ -2,9 +2,9 @@
   <div class="row py-4">
     <div class="col-sm-6", style="height: 500px">
       <div class="card">
-      <% if @flat.photo.attached? %>
+        <% if @flat.photo.attached? %>
             <%= cl_image_tag @flat.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top" %>
-          <% end %>
+        <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= @flat.name %></h5>
           <p class="card-text"><%= @flat.description %></p>
@@ -28,4 +28,3 @@
     </div>
   </div>
 </div>
-

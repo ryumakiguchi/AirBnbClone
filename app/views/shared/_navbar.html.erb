@@ -1,39 +1,52 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "/", class: "navbar-brand" do %>
-      <%= image_tag "logo1.svg.png" %>
-    <%= link_to "All Flats", "/flats", class: "btn btn-ghost" %>
-    <% end %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <div>
+      <%= link_to "/", class: "navbar-brand" do %>
+        <%= image_tag "logo1.svg.png" %>
+      <%= link_to "All Flats", "/flats", class: "btn btn-ghost" %>
+      <% end %>
+    </div>
+    <button class="navbar-toggler p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <div class="btn-group">
-            <button class="btn btn-outline-secondary btn-sm dropdown-toggle" style="margin-right:10px" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Menu
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <%= link_to "My Reservations", reservations_path, class: "dropdown-item" %>
-              <%= link_to "My Flats", my_flats_path, class: "dropdown-item" %>
-              <%= link_to "Host your home", new_flat_path, class: "dropdown-item" %>
-            </ul>
-          </div>
-
-          <li class="nav-item dropdown">
-            <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= image_tag "profile.jpeg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              <div class="d-flex align-items-center pt-2 me-3", style="height-bottom">
+                <div>
+                  <h6><small>Welcome <%= current_user.first_name %>!</small></h6>
+                </div>
+              </div>
+              <div>
+                <div class="btn-group me-3">
+                  <button class="btn btn-ghost btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                    Menu
+                  </button>
+                  <ul class="dropdown-menu ">
+                    <%= link_to "My Reservations", reservations_path, class: "dropdown-item" %>
+                    <%= link_to "My Flats", my_flats_path, class: "dropdown-item" %>
+                    <%= link_to "Host your home", new_flat_path, class: "dropdown-item" %>
+                  </ul>
+                </div>
+              </div>
+            <div class="d-flex flex-column  h-10 d-flex align-items-center">
+              <div>
+                <li class="nav-item dropdown">
+                  <% if current_user.photo.attached? %>
+                    <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", :transformation=>[
+                      {:gravity=>"face", :height=>500, :width=>500, :crop=>"crop"},
+                      {:radius=>"max"},
+                      {:width=>200, :crop=>"scale"}], id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                  <% else %>
+                    <%= image_tag "profile.jpeg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                  <% end %>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                      <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
+                      <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+                    </div>
+                </li>
+              </div>
             </div>
-          </li>
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
