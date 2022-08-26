@@ -36,16 +36,23 @@ class ReservationsController < ApplicationController
   end
 
   def edit
+    @flat = @reservation.flat
+    authorize @reservation
   end
 
   def update
-    @reservation.update(reservation_params)
-    redirect_to reservations_path(@reservation)
+    authorize @reservation
+    if @reservation.update(reservation_params)
+      redirect_to reservations_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    authorize @reservation
     @reservation.destroy
-    redirect_to reservations_path(@reservation), status: :see_other
+    redirect_to reservations_path, status: :see_other
   end
 
   private
@@ -56,6 +63,6 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:check_in, :check_out)
+    params.require(:reservation).permit(:check_in, :check_out, :confirmation_status, :payment_status)
   end
 end

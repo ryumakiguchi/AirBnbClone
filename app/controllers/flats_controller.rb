@@ -14,31 +14,28 @@ class FlatsController < ApplicationController
       {
         lat: flat.latitude,
         lng: flat.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {flat: flat}),
+        info_window: render_to_string(partial: "info_window", locals: { flat: flat }),
         image_url: helpers.asset_url("perfil.jpeg")
       }
     end
-
   end
-
 
   def show
     @flat = Flat.find(params[:id])
     @reservation = Reservation.new
     authorize @flat
-     @markers = [{
-        lat: @flat.latitude,
-        lng: @flat.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {flat: @flat}),
-        image_url: helpers.asset_url("perfil.jpeg")
-      }]
+    @markers = [{
+      lat: @flat.latitude,
+      lng: @flat.longitude,
+      info_window: render_to_string(partial: "info_window", locals: {flat: @flat}),
+      image_url: helpers.asset_url("perfil.jpeg")
+    }]
   end
 
   def new
     @flat = Flat.new
     authorize @flat
   end
-
 
   def create
     @flat = Flat.new(flat_params)
@@ -50,7 +47,6 @@ class FlatsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
 
   def edit
     @flat = Flat.find(params[:id])
@@ -78,6 +74,7 @@ class FlatsController < ApplicationController
     @user = current_user
     @flats = Flat.where(user: @user)
     authorize @flats
+    
   end
 
   private
