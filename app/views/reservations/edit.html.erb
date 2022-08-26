@@ -9,7 +9,13 @@
           <%= f.input :check_in, disabled: true%>
           <%= f.input :check_out, disabled: true%>
           <%= f.input :confirmation_status, disabled: true%>
-          <%= f.input :payment_status, label: :Pagar,"data-toggle" => "modal", "data-target" => "#exampleModal", class:"btn btn-primary"%>
+          <% if @reservation.confirmation_status == "confirmed"%>
+
+            <%= f.input :payment_status, label: :Pagar%>
+          <% else %>
+            <p>Owner must confirm the reservation first</p>
+            <%= f.input :payment_status, label: :Pagar, disabled: true%>
+          <% end %>
           <%= f.submit %>
         <% end %>
         <%# <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -23,7 +29,7 @@
 
 
 
-<%# <!-- Modal -->
+<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -41,4 +47,4 @@
       </div>
     </div>
   </div>
-</div> %>
+</div>
