@@ -6,6 +6,7 @@
 <!-- Third Container (Grid) -->
 <div class="container-fluid bg-3 text-center">
   <h3 class="margin">My Flats</h3><br>
+
   <div class="row">
     <% @flats.each do |flat| %>
       <div class="flat-card col-sm-6 justify-content-center">
@@ -18,18 +19,21 @@
           <p class="flat-card-text"><strong>Flat address: </strong><%= flat.address %></p>
         </div>
         <div class="flat-form">
-        <% if flat.reservation%>
-          <%= simple_form_for flat.reservation do |f| %>
-            <%= f.input :check_in, disabled: true%>
-            <%= f.input :check_out, disabled: true%>
-            <%= f.input :confirmation_status, collection: [:confirm, :reject] %>
-            <%= f.input :payment_status, disabled: true%>
-            <%= f.input :confirmation_status, collection: [:confirmed, :rejected] %>
-            <%= f.submit %>
+        <% if flat.reservations %>
+          <% flat.reservations.each do |reservation| %>
+            <%= simple_form_for reservation do |f| %>
+              <%= f.input :check_in, disabled: true%>
+              <%= f.input :check_out, disabled: true%>
+              <%= f.input :payment_status, disabled: true%>
+              <%= f.input :confirmation_status, collection: [:confirmed, :rejected] %>
+              <%= f.submit %>
+            <% end %>
+          <% end %>
+
+        <% end %>
         </div>
-        <% end %>
-        <% end %>
       </div>
     <% end %>
+
   </div>
 </div>

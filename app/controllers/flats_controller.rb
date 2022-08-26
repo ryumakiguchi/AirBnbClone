@@ -74,6 +74,7 @@ class FlatsController < ApplicationController
     @user = current_user
     @flats = Flat.where(user: @user)
     authorize @flats
+    
   end
 
   private
