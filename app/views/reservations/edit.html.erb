@@ -1,15 +1,19 @@
+
 <div class="container py-5">
   <div class="row">
     <div class="col-12 col-md-6 offset-lg-3">
+      <h5>Reservation at: <%= @flat.name %> (<%= @flat.address %>)</h5>
+      <h5>For: <%= @reservation.user.first_name %> <%= @reservation.user.last_name %></h5>
       <div class="bg-white rounded p-3 shadow">
-        <h3>Add a movie to your <%= @list.name %> list</h3>
-        <%= simple_form_for [@flat, @reservation] do |f| %>
+        <%= simple_form_for @reservation do |f| %>
           <%= f.input :check_in, disabled: true%>
           <%= f.input :check_out, disabled: true%>
-          <%= f.input :confirmation_status, collection: [:confirm, :reject] %>
+          <%= f.input :confirmation_status, disabled: true%>
+          <%= f.input :payment_status%>
           <%= f.submit %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+<%= console %>

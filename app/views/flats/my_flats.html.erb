@@ -18,12 +18,16 @@
           <p class="flat-card-text"><strong>Flat address: </strong><%= flat.address %></p>
         </div>
         <div class="flat-form">
+        <% if flat.reservation%>
           <%= simple_form_for flat.reservation do |f| %>
             <%= f.input :check_in, disabled: true%>
             <%= f.input :check_out, disabled: true%>
             <%= f.input :confirmation_status, collection: [:confirm, :reject] %>
+            <%= f.input :payment_status, disabled: true%>
+            <%= f.input :confirmation_status, collection: [:confirmed, :rejected] %>
             <%= f.submit %>
         </div>
+        <% end %>
         <% end %>
       </div>
     <% end %>
